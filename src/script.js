@@ -1,11 +1,12 @@
 import API from './fetchCountries';
+import Notiflix from 'notiflix';
 
 const formUrl = document.querySelector('body');
 const formInputUrl = document.querySelector('#search-box');
 const countryListUrl = document.querySelector('.country-list')
 const countryInfoUrl = document.querySelector('.country-info');
 
-formInputUrl.addEventListener('change', onSubmit);
+formInputUrl.addEventListener('input', onSubmit);
 // formInputUrl.setAttribute('name', 'input-country');
 
 
@@ -17,7 +18,8 @@ function onSubmit(e) {
   getCountry
     .then(data => {
       console.log(data.length);
-      if (data.length > 0) {
+      if (data.length > 10) Notiflix.Notify.info("Too many matches found. Please enter a more specific name.");
+      else if (data.length >= 2 && data.length<=10) {
         for (const key in data) {
           console.log(data[key]);
           createSearcher(data[key]);
@@ -30,7 +32,7 @@ function onSubmit(e) {
 
     })
     .catch(onError)
-    // .finally(() => form.reset());
+    // .finally(() => formUrl.reset());
 }
 
 function createMarkupChoises({ population, capital, languages, flags }) {
@@ -50,7 +52,7 @@ function createMarkupChoises({ population, capital, languages, flags }) {
 function createSearcher({flags,name }) { 
     return countryListUrl.insertAdjacentHTML("beforeend",`
   <li class="item">
-      <img src="${flags.svg}" height=80> ${name.official}
+      <img src="${flags.svg}" height=20>${name.official}
       </li> 
 `);
   }
