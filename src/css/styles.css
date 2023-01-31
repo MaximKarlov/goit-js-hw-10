@@ -3,8 +3,6 @@
 }
 
 body {
-  padding: 0;
-
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
     Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -12,16 +10,23 @@ body {
   background-color: #fafafa;
   color: #212121;
   line-height: 1.5;
+  justify-content: center;
+  align-items: center;
 }
 
 ul {
   list-style: none;
+  padding: 0;
 }
 
 .item {
   display: flex;
   align-items: center;
   margin-bottom: 10px;
+  padding: 10px;
+  border: 2px solid #cdba0e;
+  border-radius: 10px;
+  width: 40%;
 }
 .country {
   display: flex;
@@ -29,11 +34,42 @@ ul {
   align-items: center;
   justify-content: center;
   margin-right: 20px;
+  /* border: 1px solid black; */
+  outline: 1px solid black;
+  width: 60px;
+  height: 40px;
+  /* border-radius: 50%; */
+}
+.country-card {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  margin-bottom: 5px;
+  border: 3px solid black;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #47b445;
+}
+.country-card span {
+  font-weight: normal;
+}
+
+.country-card-image {
+  display: flex;
+  align-items: center;
+  font-size: 40px;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.country-card-image img {
+  margin-right: 20px;
 }
 
 #search-box {
   font: inherit;
   padding: 8px;
-  max-width: 320px;
+  max-width: 30%;
   margin-bottom: 16px;
 }
